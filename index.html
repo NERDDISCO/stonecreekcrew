@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>23 - Imported models</title><script defer="defer" src="bundle.17c30fec88e8a9b3.js"></script><link href="main.css" rel="stylesheet"></head><body><canvas class="webgl"></canvas><script id="vertexShader" type="x-shader/x-vertex">uniform vec2 uvScale;
+        varying vec2 vUv;
+        uniform float time;
+
+        void main()
+        {
+
+            vUv = uvScale * uv;
+            vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+            gl_Position = projectionMatrix * mvPosition;
+
+        }</script></body></html>

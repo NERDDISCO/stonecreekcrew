@@ -100,7 +100,7 @@ const o = new THREE.Object3D()
 let i = 0
 
 const material2 = new THREE.MeshBasicMaterial({
-    color: 0xFF0000
+    color: 0x00FF00
 })
 
 const cloneInstancedMesh = new THREE.InstancedMesh(model.geometry, material2, length)

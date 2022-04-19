@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23 - Imported models</title>
+</head>
+<body>
+    <canvas class="webgl"></canvas>
+
+    <script id="vertexShader" type="x-shader/x-vertex">
+
+        uniform vec2 uvScale;
+        varying vec2 vUv;
+        uniform float time;
+
+        void main()
+        {
+
+            vUv = uvScale * uv;
+            vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+            gl_Position = projectionMatrix * mvPosition;
+
+        }
+
+    </script>
+
+    <script id="defaultVertexShader" type="x-shader/x-vertex">
+        #include<instancesDeclaration>
+        uniform mat4 viewProjection;
+        
+        // Uniforms
+        uniform mat4 worldViewProjection; 
+        
+        // Varying
+        varying vec2 vUV; 
+        varying vec3 vXYZ; 
+        
+        void main(void) { 
+            #include<instancesVertex>
+            gl_Position = viewProjection * finalWorld * vec4(position, 1.0); 
+        }
+    </script>
+</body>
+</html>
